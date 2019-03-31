@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gasxgj3iotyun-biz-admin" />
+        <module name="gasxgj3iotyun-biz-appApi" />
+        <module name="gasxgj3iotyun-common" />
+        <module name="gasxgj3iotyun-eureka" />
+        <module name="gasxgj3iotyun-eurekaclient" />
+        <module name="gasxgj3iotyun-miservice" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gasxgj3iotyun" target="1.8" />
+      <module name="gasxgj3iotyun-biz-admin" target="1.8" />
+      <module name="gasxgj3iotyun-biz-appApi" target="1.8" />
+      <module name="gasxgj3iotyun-common" target="1.8" />
+      <module name="gasxgj3iotyun-eureka" target="1.8" />
+      <module name="gasxgj3iotyun-eurekaclient" target="1.8" />
+      <module name="gasxgj3iotyun-miservice" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="gasxgj3iotyun-biz-admin" options="-parameters" />
+      <module name="gasxgj3iotyun-biz-appApi" options="-parameters" />
+      <module name="gasxgj3iotyun-common" options="-parameters" />
+      <module name="gasxgj3iotyun-eureka" options="-parameters" />
+      <module name="gasxgj3iotyun-eurekaclient" options="-parameters" />
+      <module name="gasxgj3iotyun-miservice" options="-parameters" />
+    </option>
+  </component>
+</project>

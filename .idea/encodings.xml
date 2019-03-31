@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gasxgj3iotyun-biz-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gasxgj3iotyun-biz-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gasxgj3iotyun-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gasxgj3iotyun-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gasxgj3iotyun-eurekaclient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gasxgj3iotyun-miservice" charset="UTF-8" />
+  </component>
+</project>

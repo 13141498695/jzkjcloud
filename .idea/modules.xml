@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/gasxgj3iotyun.iml" filepath="$PROJECT_DIR$/.idea/gasxgj3iotyun.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-biz-admin/gasxgj3iotyun-biz-admin.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-biz-admin/gasxgj3iotyun-biz-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-biz-api/gasxgj3iotyun-biz-appApi.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-biz-api/gasxgj3iotyun-biz-appApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-common/gasxgj3iotyun-common.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-common/gasxgj3iotyun-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-eureka/gasxgj3iotyun-eureka.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-eureka/gasxgj3iotyun-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-eurekaclient/gasxgj3iotyun-eurekaclient.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-eurekaclient/gasxgj3iotyun-eurekaclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-miservice/gasxgj3iotyun-miservice.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-miservice/gasxgj3iotyun-miservice.iml" />
+    </modules>
+  </component>
+</project>
