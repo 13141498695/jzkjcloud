@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gasxgj3iotyun.iml" filepath="$PROJECT_DIR$/.idea/gasxgj3iotyun.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-biz-admin/gasxgj3iotyun-biz-admin.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-biz-admin/gasxgj3iotyun-biz-admin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-biz-api/gasxgj3iotyun-biz-appApi.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-biz-api/gasxgj3iotyun-biz-appApi.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-common/gasxgj3iotyun-common.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-common/gasxgj3iotyun-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-eureka/gasxgj3iotyun-eureka.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-eureka/gasxgj3iotyun-eureka.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-eurekaclient/gasxgj3iotyun-eurekaclient.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-eurekaclient/gasxgj3iotyun-eurekaclient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gasxgj3iotyun-miservice/gasxgj3iotyun-miservice.iml" filepath="$PROJECT_DIR$/gasxgj3iotyun-miservice/gasxgj3iotyun-miservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/jzkj.iml" filepath="$PROJECT_DIR$/.idea/jzkj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jzkj-biz-admin/jzkj-biz-admin.iml" filepath="$PROJECT_DIR$/jzkj-biz-admin/jzkj-biz-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jzkj-biz-api/jzkj-biz-api.iml" filepath="$PROJECT_DIR$/jzkj-biz-api/jzkj-biz-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jzkj-common/jzkj-common.iml" filepath="$PROJECT_DIR$/jzkj-common/jzkj-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jzkj-eureka/jzkj-eureka.iml" filepath="$PROJECT_DIR$/jzkj-eureka/jzkj-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jzkj-eurekaclient/jzkj-eurekaclient.iml" filepath="$PROJECT_DIR$/jzkj-eurekaclient/jzkj-eurekaclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jzkj-miservice/jzkj-miservice.iml" filepath="$PROJECT_DIR$/jzkj-miservice/jzkj-miservice.iml" />
     </modules>
   </component>
 </project>

@@ -1,5 +1,0 @@
-package com.gasxgj3iotyun.miservice.entityVo.product;
-
-public class productEntityVo {
-
-}
