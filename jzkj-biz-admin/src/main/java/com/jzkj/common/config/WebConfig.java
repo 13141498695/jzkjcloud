@@ -12,7 +12,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/statics/**").addResourceLocations("classpath:/statics/");
-    }
+
+        registry.addResourceHandler("user/share/images/ ").addResourceLocations("classpath:C:/Users/zhangbin/Desktop/zhangbin/jzkj/biz-admin/statics/image");
+        registry.addResourceHandler("/META-INF/resources/,classpath:/resources/,").addResourceLocations("classpath:/public/,file:${C:/Users/zhangbin/Desktop/zhangbin/jzkj/biz-admin/statics/image}");
+
+
+         }
 
 //    @Override
 //    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {

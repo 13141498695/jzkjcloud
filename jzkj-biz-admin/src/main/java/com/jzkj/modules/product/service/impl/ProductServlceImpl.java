@@ -1,31 +1,26 @@
 package com.jzkj.modules.product.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.github.pagehelper.PageHelper;
 import com.jzkj.common.annotation.DataFilter;
+import com.jzkj.common.utils.PageUtils;
 import com.jzkj.common.utils.Query;
+import com.jzkj.miservice.entity.product.ProductEntity;
+import com.jzkj.miservice.entity.product.ProductEntityExample;
 import com.jzkj.modules.customer.service.CustomerUserService;
 import com.jzkj.modules.product.dao.ProductDao;
 import com.jzkj.modules.product.service.ProduceService;
 import com.jzkj.modules.sys.entity.SysDeptEntity;
-import com.jzkj.modules.sys.entity.SysDictEntity;
-import com.jzkj.modules.sys.entity.SysUserEntity;
 import com.jzkj.modules.sys.service.SysDeptService;
 import com.jzkj.modules.sys.service.SysUserRoleService;
 import com.jzkj.modules.sys.service.SysUserService;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.plugins.Page;
-import com.jzkj.common.utils.PageUtils;
-import com.jzkj.miservice.entity.product.ProductEntity;
-import com.jzkj.miservice.entity.product.ProductEntityExample;
-import com.github.pagehelper.PageHelper;
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service("ProduceService")
 public class ProductServlceImpl implements ProduceService {
@@ -43,8 +38,10 @@ private ProductDao productdao;
 	private CustomerUserService customerUserService;
 	@Override
 	public int save(ProductEntity product) {
+		ProductEntity products=this.productdao.selectLastEntity();
+		product.setProductId(products.getProductId());
 		// TODO Auto-generated method stub
-		return productdao.insertSelective(product);
+		return productdao.updateByPrimaryKeySelective(product);
 	}
 
 	@Override
@@ -96,7 +93,29 @@ private ProductDao productdao;
         return new PageUtils(page);
 	}
 
+	@Override
+	public void devlopr(String s) {
+		ProductEntity productEntity=this.productdao.selectByPrimaryKey(s);
+		productEntity.setProductStatus(2);
+		this.productdao.updateByPrimaryKeySelective(productEntity);
+	}
 
-	
+	@Override
+	public void low(String s) {
+		ProductEntity productEntity=this.productdao.selectByPrimaryKey(s);
+		productEntity.setProductStatus(3);
+		this.productdao.updateByPrimaryKeySelective(productEntity);
+	}
 
+	@Override
+	public List<ProductEntity> selectAll() {
+
+		return this.productdao.productlist();
+	}
+
+	@Override
+	public void saveContext(ProductEntity product) {
+		product.setCreateTime(new Date());
+		this.productdao.insertSelective(product);
+	}
 }

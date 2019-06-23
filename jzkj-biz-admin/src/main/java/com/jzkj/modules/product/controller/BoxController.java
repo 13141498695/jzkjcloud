@@ -1,31 +1,26 @@
 package com.jzkj.modules.product.controller;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 import com.jzkj.common.annotation.SysLog;
-import com.jzkj.modules.oss.cloud.OSSFactory;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.jzkj.common.utils.PageUtils;
 import com.jzkj.common.utils.ReturnResult;
 import com.jzkj.common.validator.ValidatorUtils;
 import com.jzkj.common.validator.group.AddGroup;
 import com.jzkj.common.validator.group.UpdateGroup;
 import com.jzkj.miservice.entity.product.BoxEntity;
+import com.jzkj.modules.oss.cloud.OSSFactory;
 import com.jzkj.modules.product.service.BoxService;
 import com.jzkj.modules.product.service.RoadService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/product/sysbox")
 public class BoxController {
@@ -93,7 +88,7 @@ public class BoxController {
 	
 	@SysLog("保存路信息")
 	@RequestMapping("/file")
-	public ReturnResult file(MultipartFile  file,HttpServletRequest  request){
+	public ReturnResult file(MultipartFile  file, HttpServletRequest  request){
 
 		String basePath = request.getServletContext().getRealPath("upload/imagesBox/");
         System.out.println(basePath);
@@ -128,7 +123,8 @@ public class BoxController {
 	 * 查询所有调压箱
 	 */
 	@RequestMapping("/boxlist")
-	public List<BoxEntity> boxlist(){		
+	public List<BoxEntity> boxlist(){
+
 		return boxService.getAllBox();
 	}
 }

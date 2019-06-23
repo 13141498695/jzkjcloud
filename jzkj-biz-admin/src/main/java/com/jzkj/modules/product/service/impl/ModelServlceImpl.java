@@ -1,20 +1,18 @@
 package com.jzkj.modules.product.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
+import com.baomidou.mybatisplus.plugins.Page;
+import com.github.pagehelper.PageHelper;
+import com.jzkj.common.utils.PageUtils;
 import com.jzkj.common.utils.Query;
+import com.jzkj.miservice.entity.product.ModelEntity;
+import com.jzkj.miservice.entity.product.ModelEntityExample;
 import com.jzkj.modules.product.dao.ModelDao;
 import com.jzkj.modules.product.service.ModelService;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.plugins.Page;
-import com.jzkj.common.utils.PageUtils;
-import com.jzkj.miservice.entity.product.ModelEntity;
-import com.jzkj.miservice.entity.product.ModelEntityExample;
-import com.github.pagehelper.PageHelper;
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Service("ModelService")
 public class ModelServlceImpl implements ModelService {

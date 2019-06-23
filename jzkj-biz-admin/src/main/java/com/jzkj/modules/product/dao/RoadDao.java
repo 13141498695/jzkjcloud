@@ -2,8 +2,9 @@ package com.jzkj.modules.product.dao;
 
 import com.jzkj.miservice.entity.product.RoadEntity;
 import com.jzkj.miservice.entity.product.RoadEntityExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface RoadDao {
     long countByExample(RoadEntityExample example);
@@ -26,5 +27,5 @@ public interface RoadDao {
 
     int updateByPrimaryKeySelective(RoadEntity record);
 
-    int updateByPrimaryKey(RoadEntity record);   
+    int updateByPrimaryKey(RoadEntity record);
 }

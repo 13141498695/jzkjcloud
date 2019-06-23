@@ -34,7 +34,7 @@ public class SwaggerConfig{
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
             .title("接口文档")
-            .description("gasxgj3iotyun-bizAdmin文档")
+            .description("")
             .termsOfServiceUrl("http://www.gasxgj.com")
             .version("3.2.0")
             .build();

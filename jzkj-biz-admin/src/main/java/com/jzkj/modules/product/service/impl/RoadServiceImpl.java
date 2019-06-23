@@ -1,20 +1,19 @@
 package com.jzkj.modules.product.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.mybatisplus.plugins.Page;
+import com.github.pagehelper.PageHelper;
+import com.jzkj.common.utils.PageUtils;
 import com.jzkj.common.utils.Query;
+import com.jzkj.miservice.entity.product.RoadEntity;
+import com.jzkj.miservice.entity.product.RoadEntityExample;
 import com.jzkj.modules.product.dao.RoadDao;
+import com.jzkj.modules.product.service.RoadService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.plugins.Page;
-import com.jzkj.common.utils.PageUtils;
-import com.jzkj.miservice.entity.product.RoadEntity;
-import com.jzkj.miservice.entity.product.RoadEntityExample;
-import com.jzkj.modules.product.service.RoadService;
-import com.github.pagehelper.PageHelper;
+import java.util.List;
+import java.util.Map;
 
 @Service("roadService")
 public class RoadServiceImpl implements RoadService{

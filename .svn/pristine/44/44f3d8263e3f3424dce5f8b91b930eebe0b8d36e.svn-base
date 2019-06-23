@@ -1,0 +1,177 @@
+package com.gasxgj3iotyun.modules.product.controller;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.gasxgj3iotyun.common.annotation.SysLog;
+import com.gasxgj3iotyun.common.utils.PageUtils;
+import com.gasxgj3iotyun.common.utils.ReturnResult;
+import com.gasxgj3iotyun.common.validator.ValidatorUtils;
+import com.gasxgj3iotyun.common.validator.group.AddGroup;
+import com.gasxgj3iotyun.common.validator.group.UpdateGroup;
+import com.gasxgj3iotyun.miservice.entity.product.BoxEntity;
+import com.gasxgj3iotyun.miservice.entity.product.RoadEntityExample;
+import com.gasxgj3iotyun.modules.product.service.BoxService;
+import com.gasxgj3iotyun.modules.product.service.RoadService;
+@RestController
+@RequestMapping("/product/sysbox")
+public class BoxController {
+	@Resource
+	private BoxService boxService;
+	
+	@Resource
+	private RoadService roadService;
+	    
+	  
+	@RequestMapping("/list")
+	public ReturnResult list(@RequestParam Map<String, Object> params){
+		PageUtils page = boxService.queryPage(params);
+
+		return ReturnResult.ok().put("page", page);
+	}
+
+	
+	/**
+	 * 路信息信息
+	 */
+	@RequestMapping("/info/{boxId}")
+	public ReturnResult info(@PathVariable("boxId") String boxId){
+		BoxEntity box = boxService.selectById(boxId);
+		
+		return ReturnResult.ok().put("box", box);
+	}
+	
+	/**
+	 * 保存路信息
+	 */
+	@SysLog("保存路信息")
+	@RequestMapping("/save")
+	public ReturnResult save(@RequestBody BoxEntity box){
+		ValidatorUtils.validateEntity(box, AddGroup.class);
+		box.setCreateTime(new Date());
+		
+		box.setDelFlag((byte) 0);
+		boxService.save(box);
+		
+		return ReturnResult.ok();
+	}
+	
+	/**
+	 * 修改路信息
+	 */
+	@SysLog("修改路信息")
+	@RequestMapping("/update")
+	public ReturnResult update(@RequestBody BoxEntity box){
+		ValidatorUtils.validateEntity(box, UpdateGroup.class);
+		boxService.update(box);		
+		return ReturnResult.ok();
+	}
+	
+
+	
+	//生成图片的文件夹
+	private String uploadFile(CommonsMultipartFile multipartFile, HttpServletRequest request) {
+
+        String serverFilePatn = "";
+
+        try {
+            //String projectServerPath="http://192.168.1.181:8081/upload/";
+            if (null != multipartFile) {
+                /**
+                 * 项目服务器地址路径
+                 */
+                String projectServerPath = request.getScheme() + "://" + request.getServerName() + ":" +
+                        request.getServerPort() + request.getContextPath() + "/img/";
+                /**
+                 * 上传文件绝对路径
+                 */
+                //String path = request.getSession().getServletContext().getRealPath("/WEB-INF/img/");
+
+                String path = request.getSession().getServletContext().getRealPath("/img/");
+                /**
+                 * 上传文件名
+                 */
+                String fileName = multipartFile.getOriginalFilename();
+
+                String allFileName = path + fileName;
+
+                System.out.println(allFileName);
+
+                File file = new File(allFileName);
+                /**
+                 * 判断路径是否存在，如果不存在就创建一个
+                 */
+                if (!file.getParentFile().exists()) {
+
+                    file.getParentFile().mkdirs();
+                }
+
+                String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
+                String newFileName = String.valueOf(System.currentTimeMillis()) + suffix;
+                /**
+                 * 创建文件
+                 */
+                multipartFile.transferTo(new File(path + File.separator + newFileName));
+                /**
+                 * 返回服务器文件地址
+                 */
+                serverFilePatn = projectServerPath + newFileName;
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        System.out.println(serverFilePatn);
+        return serverFilePatn;
+    }
+	
+
+	@SysLog("保存路信息")
+	@RequestMapping("/file")
+	public ReturnResult file(MultipartFile  file,HttpServletRequest  request){
+		 String filesUpload_xm = FilesUtils.FilesUpload_xm(request, file, "\\upload");
+	    System.out.println("图片路径:"+filesUpload_xm);
+	    
+	    BoxEntity a=new BoxEntity();
+	    
+	    a.setBoxImage(filesUpload_xm);//8318025036367575065
+		a.setCreateTime(new Date());
+		boxService.save(a);
+		return ReturnResult.ok();
+	}
+
+	/**
+	 * 删除路信息
+	 */
+	@SysLog("删除路信息")
+	@RequestMapping("/delete")
+	public ReturnResult delete(@RequestBody String[] boxIds){
+		for (int i = 0; i < boxIds.length; i++) {
+			this.boxService.delete(boxIds[i]);
+		}
+		roadService.updateByBoxId(Arrays.asList(boxIds));
+		return ReturnResult.ok();
+	}
+	
+	/**
+	 * 查询所有调压箱
+	 */
+	@RequestMapping("/boxlist")
+	public List<BoxEntity> boxlist(){		
+		return boxService.getAllBox();
+	}
+}

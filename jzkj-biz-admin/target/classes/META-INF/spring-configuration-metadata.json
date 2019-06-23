@@ -1,0 +1,49 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.jzkj.datasources.DynamicDataSourceConfig",
+      "name": "spring.datasource.druid.first",
+      "sourceMethod": "firstDataSource()",
+      "type": "javax.sql.DataSource"
+    },
+    {
+      "sourceType": "com.jzkj.datasources.DynamicDataSourceConfig",
+      "name": "spring.datasource.druid.second",
+      "sourceMethod": "secondDataSource()",
+      "type": "javax.sql.DataSource"
+    },
+    {
+      "sourceType": "com.jzkj.common.config.OssConfig",
+      "name": "spring.ossconfig",
+      "type": "com.jzkj.common.config.OssConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.jzkj.common.config.OssConfig",
+      "name": "spring.ossconfig.access-key-id",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.jzkj.common.config.OssConfig",
+      "name": "spring.ossconfig.access-key-secret",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.jzkj.common.config.OssConfig",
+      "name": "spring.ossconfig.bucket-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.jzkj.common.config.OssConfig",
+      "name": "spring.ossconfig.endpoint",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.jzkj.common.config.OssConfig",
+      "name": "spring.ossconfig.get-url",
+      "type": "java.lang.String"
+    }
+  ]
+}

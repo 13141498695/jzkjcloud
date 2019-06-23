@@ -1,0 +1,5 @@
+package com.gasxgj3iotyun.modules.customer.controller;
+
+public class CustomerUserController {
+
+}

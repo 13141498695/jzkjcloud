@@ -1,7 +1,6 @@
 package com.jzkj.common.config;
 
 import com.jzkj.modules.sys.shiro.ShiroTag;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;

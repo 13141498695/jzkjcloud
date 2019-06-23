@@ -1,25 +1,18 @@
 package com.jzkj.modules.product.controller;
 
+import com.jzkj.common.annotation.SysLog;
+import com.jzkj.common.utils.PageUtils;
+import com.jzkj.common.utils.ReturnResult;
+import com.jzkj.miservice.entity.product.ProductTypeBoxEntity;
+import com.jzkj.modules.product.service.ProduceTypeService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.Resource;
-
-import com.jzkj.common.annotation.SysLog;
-import com.jzkj.modules.product.service.ProduceTypeService;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.jzkj.common.utils.PageUtils;
-import com.jzkj.common.utils.ReturnResult;
-import com.jzkj.miservice.entity.product.ProductTypeBoxEntity;
 
 @RestController
 @RequestMapping("/sys/producttype")
@@ -41,7 +34,7 @@ public class ProductTypeController {
 		@SysLog("保存产品类型")
 		@RequestMapping("/add")
 		@RequiresPermissions("sys:producttype:save")
-		public ReturnResult save(@RequestBody ProductTypeBoxEntity  productTypeBoxEntity){
+		public ReturnResult save(@RequestBody ProductTypeBoxEntity productTypeBoxEntity){
 			String string = java.util.UUID.randomUUID().toString();
 			productTypeBoxEntity.setProductTypeId(string);
 			productTypeBoxEntity.setCreateTime(new Date());

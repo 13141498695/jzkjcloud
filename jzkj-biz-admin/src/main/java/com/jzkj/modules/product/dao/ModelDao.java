@@ -2,10 +2,9 @@ package com.jzkj.modules.product.dao;
 
 import com.jzkj.miservice.entity.product.ModelEntity;
 import com.jzkj.miservice.entity.product.ModelEntityExample;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 
 public interface ModelDao {
     long countByExample(ModelEntityExample example);

@@ -1,0 +1,89 @@
+package com.gasxgj3iotyun.modules.devices.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Service;
+
+import com.baomidou.mybatisplus.plugins.Page;
+import com.gasxgj3iotyun.common.utils.PageUtils;
+import com.gasxgj3iotyun.common.utils.Query;
+import com.gasxgj3iotyun.miservice.entity.devices.DeviceEntity;
+import com.gasxgj3iotyun.miservice.entity.devices.DeviceEntityExample;
+import com.gasxgj3iotyun.miservice.entity.product.RoadEntity;
+import com.gasxgj3iotyun.miservice.entity.product.RoadEntityExample;
+import com.gasxgj3iotyun.modules.devices.dao.DeviceDao;
+import com.gasxgj3iotyun.modules.devices.service.DeviceService;
+import com.github.pagehelper.PageHelper;
+@Service("DeviceService")
+public class DeviceServiceImpl  implements DeviceService{
+	@Resource
+	private DeviceDao deviceDao;
+
+	@Override
+	public int save(DeviceEntity device) {
+		return deviceDao.insert(device);
+	}
+
+	@Override
+	public int update(DeviceEntity device) {
+		DeviceEntityExample example = new DeviceEntityExample();
+		DeviceEntityExample.Criteria criteria = example.createCriteria();
+		criteria.andDeviceIdEqualTo(device.getDeviceId());	
+		return deviceDao.updateByExample(device, example);
+	}
+
+	@Override
+	public PageUtils queryPage(Map<String, Object> params) {
+		String deviceName = (String)params.get("deviceName");
+		Page<DeviceEntity> page = new Query<DeviceEntity>(params).getPage();
+		
+        PageHelper.startPage(page.getCurrent(), page.getSize()); 
+
+        DeviceEntityExample example = new DeviceEntityExample();
+        DeviceEntityExample.Criteria criteria= example.createCriteria();
+        if(StringUtils.isNotBlank(deviceName)){
+            criteria.andDeviceSysnameLike("%"+deviceName+"%");
+		}
+         //定义查
+        Byte delflg=-1;
+        criteria.andDelFlagNotEqualTo(delflg);
+        List<DeviceEntity> allItems = deviceDao.selectByExample(example);
+        long total = deviceDao.countByExample(example);        
+        page.setTotal((int)total);
+        page.setRecords(allItems);
+        return new PageUtils(page);
+	}
+
+	@Override
+	public void deleteBatchIds(List<String> asList) {
+		DeviceEntityExample example = new DeviceEntityExample();
+		DeviceEntityExample.Criteria criteria = example.createCriteria();
+		criteria.andDeviceIdIn(asList);
+		deviceDao.deleteByExample(example);
+	}
+
+	@Override
+	public DeviceEntity selectById(String deviceId) {
+		return deviceDao.selectByPrimaryKey(deviceId);
+	}
+	
+	@Override
+	public void delete(String devicesId) {
+		deviceDao.deleteDeviseByid(devicesId);		
+	}
+
+	@Override
+	public int updateByRoadId(List<String> roadIds) {
+		DeviceEntityExample example = new DeviceEntityExample();
+		DeviceEntityExample.Criteria criteria = example.createCriteria();
+		criteria.andDeviceRoadIdIn(roadIds);
+		DeviceEntity deviceEntity=new DeviceEntity();
+		deviceEntity.setDeviceRoadId("");
+		return deviceDao.updateByExample(deviceEntity, example);
+	}
+
+}

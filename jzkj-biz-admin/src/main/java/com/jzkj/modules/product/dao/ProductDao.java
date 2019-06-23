@@ -2,10 +2,9 @@ package com.jzkj.modules.product.dao;
 
 import com.jzkj.miservice.entity.product.ProductEntity;
 import com.jzkj.miservice.entity.product.ProductEntityExample;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 
 public interface ProductDao {
     long countByExample(ProductEntityExample example);
@@ -35,4 +34,6 @@ public interface ProductDao {
 	int updatedelflag(String productId);
 
 	int deleteByid(String productiId);
+
+    ProductEntity selectLastEntity();
 }

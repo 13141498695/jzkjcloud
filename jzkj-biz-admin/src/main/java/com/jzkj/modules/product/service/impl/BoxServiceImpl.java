@@ -1,23 +1,22 @@
 package com.jzkj.modules.product.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.mybatisplus.plugins.Page;
+import com.github.pagehelper.PageHelper;
+import com.jzkj.common.utils.PageUtils;
 import com.jzkj.common.utils.Query;
+import com.jzkj.miservice.entity.product.BoxEntity;
+import com.jzkj.miservice.entity.product.BoxEntityExample;
 import com.jzkj.modules.product.dao.BoxDao;
+import com.jzkj.modules.product.service.BoxService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.plugins.Page;
-import com.jzkj.common.utils.PageUtils;
-import com.jzkj.miservice.entity.product.BoxEntity;
-import com.jzkj.miservice.entity.product.BoxEntityExample;
-import com.jzkj.modules.product.service.BoxService;
-import com.github.pagehelper.PageHelper;
+import java.util.List;
+import java.util.Map;
 
 @Service("boxService")
-public class BoxServiceImpl implements BoxService{
+public class BoxServiceImpl implements BoxService {
 	@Autowired
 	private BoxDao boxDao;
 

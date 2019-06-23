@@ -1,20 +1,18 @@
 package com.jzkj.modules.product.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
+import com.baomidou.mybatisplus.plugins.Page;
+import com.github.pagehelper.PageHelper;
+import com.jzkj.common.utils.PageUtils;
 import com.jzkj.common.utils.Query;
+import com.jzkj.miservice.entity.product.ProductTypeBoxEntity;
+import com.jzkj.miservice.entity.product.ProductTypeBoxEntityExample;
 import com.jzkj.modules.product.dao.ProductTypeBoxDao;
 import com.jzkj.modules.product.service.ProduceTypeService;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.plugins.Page;
-import com.jzkj.common.utils.PageUtils;
-import com.jzkj.miservice.entity.product.ProductTypeBoxEntity;
-import com.jzkj.miservice.entity.product.ProductTypeBoxEntityExample;
-import com.github.pagehelper.PageHelper;
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Service("ProduceTypeService")
 public class ProductTypeServlceImpl implements ProduceTypeService {
@@ -44,7 +42,7 @@ private ProductTypeBoxDao producttypedao;
 		String productTypeName = (String)params.get("productTypeName");
 		Page<ProductTypeBoxEntity> page = new Query<ProductTypeBoxEntity>(params).getPage();
         PageHelper.startPage(page.getCurrent(), page.getSize()); 
-        ProductTypeBoxEntityExample  example =new ProductTypeBoxEntityExample();
+        ProductTypeBoxEntityExample example =new ProductTypeBoxEntityExample();
     	ProductTypeBoxEntityExample.Criteria  criteria=example.createCriteria();
 
         if(productTypeName!=null){

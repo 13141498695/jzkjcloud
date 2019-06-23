@@ -1,0 +1,103 @@
+package com.gasxgj3iotyun.modules.product.controller;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gasxgj3iotyun.common.annotation.SysLog;
+import com.gasxgj3iotyun.common.utils.PageUtils;
+import com.gasxgj3iotyun.common.utils.ReturnResult;
+import com.gasxgj3iotyun.common.validator.ValidatorUtils;
+import com.gasxgj3iotyun.common.validator.group.AddGroup;
+import com.gasxgj3iotyun.common.validator.group.UpdateGroup;
+import com.gasxgj3iotyun.miservice.entity.product.BoxEntity;
+import com.gasxgj3iotyun.miservice.entity.product.RoadEntityExample;
+import com.gasxgj3iotyun.modules.product.service.BoxService;
+import com.gasxgj3iotyun.modules.product.service.RoadService;
+@RestController
+@RequestMapping("/product/sysbox")
+public class BoxController {
+	@Resource
+	private BoxService boxService;
+	
+	@Resource
+	private RoadService roadService;
+	    
+	  
+	@RequestMapping("/list")
+	public ReturnResult list(@RequestParam Map<String, Object> params){
+		PageUtils page = boxService.queryPage(params);
+
+		return ReturnResult.ok().put("page", page);
+	}
+
+	
+	/**
+	 * 路信息信息
+	 */
+	@RequestMapping("/info/{boxId}")
+	public ReturnResult info(@PathVariable("boxId") String boxId){
+		BoxEntity box = boxService.selectById(boxId);
+		
+		return ReturnResult.ok().put("box", box);
+	}
+	
+	/**
+	 * 保存路信息
+	 */
+	@SysLog("保存路信息")
+	@RequestMapping("/save")
+	public ReturnResult save(@RequestBody BoxEntity box){
+		ValidatorUtils.validateEntity(box, AddGroup.class);
+		box.setCreateTime(new Date());
+		
+		box.setDelFlag((byte) 0);
+		boxService.save(box);
+		
+		return ReturnResult.ok();
+	}
+	
+	/**
+	 * 修改路信息
+	 */
+	@SysLog("修改路信息")
+	@RequestMapping("/update")
+	public ReturnResult update(@RequestBody BoxEntity box){
+		ValidatorUtils.validateEntity(box, UpdateGroup.class);
+		boxService.update(box);		
+		return ReturnResult.ok();
+	}
+	
+	/**
+	 * 删除路信息
+	 */
+	@SysLog("删除路信息")
+	@RequestMapping("/delete")
+	public ReturnResult delete(@RequestBody String[] boxIds){
+		for (int i = 0; i < boxIds.length; i++) {
+			this.boxService.delete(boxIds[i]);
+			RoadEntityExample example = new RoadEntityExample();
+			RoadEntityExample.Criteria criteria = example.createCriteria();
+			criteria.andRoadBoxIdEqualTo(boxIds[i]);
+		}
+		roadService.updateByBoxId(Arrays.asList(boxIds));
+		return ReturnResult.ok();
+	}
+	
+	/**
+	 * 查询所有调压箱
+	 */
+	@RequestMapping("/boxlist")
+	public List<BoxEntity> boxlist(){		
+		return boxService.getAllBox();
+	}
+}

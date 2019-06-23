@@ -1,11 +1,10 @@
 package com.jzkj.modules.product.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.jzkj.miservice.entity.product.BoxEntity;
 import com.jzkj.miservice.entity.product.BoxEntityExample;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BoxDao {
     long countByExample(BoxEntityExample example);

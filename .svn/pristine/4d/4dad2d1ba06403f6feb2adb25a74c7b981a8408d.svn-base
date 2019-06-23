@@ -1,0 +1,11 @@
+package com.gasxgj3iotyun.modules.devices.service;
+
+import java.util.List;
+
+import com.gasxgj3iotyun.miservice.entity.product.ModelEntity;
+
+public interface DeviceModelRelationService {
+
+	List<String> getModelId(String devicesId);
+
+}

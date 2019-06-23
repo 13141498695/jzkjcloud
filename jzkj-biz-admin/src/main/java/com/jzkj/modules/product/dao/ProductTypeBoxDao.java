@@ -2,10 +2,9 @@ package com.jzkj.modules.product.dao;
 
 import com.jzkj.miservice.entity.product.ProductTypeBoxEntity;
 import com.jzkj.miservice.entity.product.ProductTypeBoxEntityExample;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 
 public interface ProductTypeBoxDao {
     long countByExample(ProductTypeBoxEntityExample example);

@@ -1,0 +1,78 @@
+package com.gasxgj3iotyun.modules.product.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.gasxgj3iotyun.common.utils.Constant;
+import com.gasxgj3iotyun.common.utils.PageUtils;
+import com.gasxgj3iotyun.common.utils.Query;
+import com.gasxgj3iotyun.miservice.entity.product.BoxEntity;
+import com.gasxgj3iotyun.miservice.entity.product.BoxEntityExample;
+import com.gasxgj3iotyun.modules.product.dao.BoxDao;
+import com.gasxgj3iotyun.modules.product.service.BoxService;
+import com.gasxgj3iotyun.modules.sys.entity.SysUserEntity;
+import com.github.pagehelper.PageHelper;
+
+@Service("boxService")
+public class BoxServiceImpl implements BoxService{
+	@Autowired
+	private BoxDao boxDao;
+
+	@Override
+	public int save(BoxEntity box) {
+		box.setBoxId(java.util.UUID.randomUUID().toString());
+		return boxDao.insert(box);
+	}
+
+	@Override
+	public int update(BoxEntity box) {
+		BoxEntityExample example = new BoxEntityExample();
+		BoxEntityExample.Criteria criteria = example.createCriteria();
+		criteria.andBoxIdEqualTo(box.getBoxId());	
+		return boxDao.updateByExample(box, example);
+	}
+
+	@Override
+	public PageUtils queryPage(Map<String, Object> params) {
+		String boxName = (String)params.get("boxName");
+		Page<BoxEntity> page = new Query<BoxEntity>(params).getPage();
+		
+        PageHelper.startPage(page.getCurrent(), page.getSize()); 
+        
+        BoxEntityExample example = new BoxEntityExample();
+        if(StringUtils.isNotBlank(boxName)){
+            BoxEntityExample.Criteria criteria= example.createCriteria();
+            criteria.andBoxNameLike("%"+boxName+"%");
+		}
+        List<BoxEntity> allItems = boxDao.selectByExample(example);
+        long total = boxDao.countByExample(example);        
+        page.setTotal((int)total);
+        page.setRecords(allItems);
+        return new PageUtils(page);
+	}
+
+	@Override
+	public void deleteBatchIds(List<String> asList) {
+		BoxEntityExample example = new BoxEntityExample();
+		BoxEntityExample.Criteria criteria = example.createCriteria();
+		criteria.andBoxIdIn(asList);
+		boxDao.deleteByExample(example);
+	}
+
+	@Override
+	public BoxEntity selectById(String boxId) {
+		return boxDao.selectByPrimaryKey(boxId);
+	}
+
+	@Override
+	public List<BoxEntity> getAllBox() {
+		return boxDao.selectByExample(new BoxEntityExample());
+	}
+
+}

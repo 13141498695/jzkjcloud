@@ -1,7 +1,6 @@
 package com.jzkj.common.config;
 
 import com.jzkj.modules.sys.shiro.UserRealm;
-
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -65,18 +64,44 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
         shiroFilter.setLoginUrl("/login.html");
+
         shiroFilter.setUnauthorizedUrl("/");
 
         Map<String, String> filterMap = new LinkedHashMap<>();
         filterMap.put("/swagger/**", "anon");
+        filterMap.put("/suyuan/index.html", "anon");
         filterMap.put("/v2/api-docs", "anon");
         filterMap.put("/swagger-ui.html", "anon");
+        filterMap.put("/productContext.html", "anon");
+
         filterMap.put("/webjars/**", "anon");
         filterMap.put("/swagger-resources/**", "anon");
-
         filterMap.put("/statics/**", "anon");
         filterMap.put("/login.html", "anon");
+        filterMap.put("/productContextTest.jsp", "anon");
+
+        filterMap.put("/suyuanindex.html", "anon");
+        filterMap.put("/about.html", "anon");
+        filterMap.put("/shop/**.html", "anon");
+        filterMap.put("/bird.html", "anon");
+        filterMap.put("/certification.html", "anon");
+        filterMap.put("/data.html", "anon");
+        filterMap.put("/data-list.html", "anon");
+        filterMap.put("/distribute.html", "anon");
+        filterMap.put("/new.html", "anon");
+        filterMap.put("/download.html", "anon");
+        filterMap.put("/new-list.html", "anon");
+        filterMap.put("/register.html", "anon");
+        filterMap.put("/productlist.html", "anon");
+        filterMap.put("/productNull.html", "anon");
+
         filterMap.put("/sys/login", "anon");
+        filterMap.put("/info/**", "anon");
+        filterMap.put("/info3/**", "anon");
+        filterMap.put("/info4", "anon");
+        filterMap.put("/info4/**", "anon");
+        filterMap.put("/getsession", "anon");
+        filterMap.put("/sys/productContext/suyuan", "anon");
         filterMap.put("/favicon.ico", "anon");
         filterMap.put("/captcha.jpg", "anon");
         filterMap.put("/**", "authc");

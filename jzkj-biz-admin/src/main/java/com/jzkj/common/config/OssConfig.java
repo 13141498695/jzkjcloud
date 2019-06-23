@@ -6,22 +6,21 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 
+@Data
+@Component
+@ConfigurationProperties(prefix="spring.ossconfig")
+public class OssConfig {
 
-    @Data
-    @Component
-    @ConfigurationProperties(prefix="spring.ossconfig")
-    public class OssConfig {
+    private String accessKeyId;
 
-        private String accessKeyId;
+    private String accessKeySecret;
 
-        private String accessKeySecret;
+    private String bucketName;
 
-        private String bucketName;
-
-        private String endpoint;
+    private String endpoint;
 
 
-        private String getUrl;
+    private String getUrl;
 
 
 

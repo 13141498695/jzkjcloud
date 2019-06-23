@@ -1,9 +1,10 @@
 package com.jzkj.modules.product.service;
 
-import java.util.Map;
-
 import com.jzkj.common.utils.PageUtils;
 import com.jzkj.miservice.entity.product.ProductEntity;
+
+import java.util.List;
+import java.util.Map;
 
 public interface ProduceService {
 
@@ -19,5 +20,10 @@ public interface ProduceService {
 
 	PageUtils queryPage(Map<String, Object> params);
 
+    void devlopr(String s);
+	void low(String s);
 
+    List<ProductEntity> selectAll();
+
+	void saveContext(ProductEntity product);
 }
